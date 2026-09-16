@@ -1,11 +1,11 @@
 #include <random>
 #include <iostream>
 
-int main()
+void play()
 {
-    std::random_device rd;                        // non-deterministic generator
-    std::mt19937 gen(rd());                       // to seed mersenne twister.
-    std::uniform_int_distribution<> dist(1, 100); // distribute results between 1 and 6 inclusive.
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dist(1, 100);
     short int n = dist(gen);
     short int k = -1;
     std::cout << "Угадай число N от 1 до 100" << std::endl;
@@ -16,13 +16,21 @@ int main()
     {
         if (k > n)
         {
-            std::cout << "N << " << k << std::endl;
+            std::cout << "N << " << k << " (Less)" << std::endl;
         }
         else
         {
-            std::cout << "N >> " << k << std::endl;
+            std::cout << "N >> " << k << " (Greater)" << std::endl;
         }
         std::cin >> k;
     }
     std::cout << "Число найдено. N = " << n << std::endl;
+}
+
+int main()
+{
+    while (true)
+    {
+        play();
+    }
 }
