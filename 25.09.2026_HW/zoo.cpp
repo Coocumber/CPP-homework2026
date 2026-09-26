@@ -25,6 +25,8 @@ Animal::Animal(Animal &&other) = default;
 
 Animal &Animal::operator=(const Animal &other)
 {
+    food_state_animal_ = other.food_state_animal_;
+    name_ = other.name_;
     return *this;
 };
 
@@ -63,6 +65,8 @@ Giraffe::Giraffe(Giraffe &&other) = default;
 
 Giraffe &Giraffe::operator=(const Giraffe &other)
 {
+    food_state_animal_ = other.food_state_animal_;
+    name_ = other.name_;
     return *this;
 }
 
@@ -101,6 +105,8 @@ Ostrich::Ostrich(Ostrich &&other) = default;
 
 Ostrich &Ostrich::operator=(const Ostrich &other)
 {
+    food_state_animal_ = other.food_state_animal_;
+    name_ = other.name_;
     return *this;
 }
 
@@ -139,6 +145,8 @@ Hippo::Hippo(Hippo &&other) = default;
 
 Hippo &Hippo::operator=(const Hippo &other)
 {
+    food_state_animal_ = other.food_state_animal_;
+    name_ = other.name_;
     return *this;
 }
 
@@ -177,6 +185,8 @@ Lion::Lion(Lion &&other) = default;
 
 Lion &Lion::operator=(const Lion &other)
 {
+    food_state_animal_ = other.food_state_animal_;
+    name_ = other.name_;
     return *this;
 }
 
@@ -215,6 +225,8 @@ Elephant::Elephant(Elephant &&other) = default;
 
 Elephant &Elephant::operator=(const Elephant &other)
 {
+    food_state_animal_ = other.food_state_animal_;
+    name_ = other.name_;
     return *this;
 }
 
