@@ -1,0 +1,22 @@
+{
+    "CppHelper.SourcePattern": [
+        "{FILE}.inl",
+        "{FILE}.cpp",
+        "{FILE}.cxx",
+        "{FILE}.cc",
+        "{FILE}.cp",
+        "{FILE}.c",
+        "/src/{FILE}.inl",
+        "/src/{FILE}.cpp",
+        "/src/{FILE}.cxx",
+        "/src/{FILE}.cc",
+        "/src/{FILE}.cp",
+        "/src/{FILE}.c",
+        "/source/{FILE}.inl",
+        "/source/{FILE}.cpp",
+        "/source/{FILE}.cxx",
+        "/source/{FILE}.cc",
+        "/source/{FILE}.cp",
+        "/source/{FILE}.c"
+    ]
+}
