@@ -24,6 +24,7 @@ double Rectangular::perimeter()
 
 Rectangular::Rectangular(const Rectangular &other)
 {
+    name_ = other.name_;
     weight_ = other.weight_;
     hight_ = other.hight_;
     S_ = other.S_;
@@ -32,11 +33,13 @@ Rectangular::Rectangular(const Rectangular &other)
 
 Rectangular::Rectangular(Rectangular &&other)
 {
+    name_ = other.name_;
     weight_ = other.weight_;
     hight_ = other.hight_;
     S_ = other.S_;
     P_ = other.P_;
 
+    other.name_ = "";
     other.weight_ = 0;
     other.hight_ = 0;
     other.S_ = 0;
@@ -45,6 +48,7 @@ Rectangular::Rectangular(Rectangular &&other)
 
 Rectangular &Rectangular::operator=(const Rectangular &other)
 {
+    name_ = other.name_;
     weight_ = other.weight_;
     hight_ = other.hight_;
     S_ = other.S_;
@@ -54,11 +58,13 @@ Rectangular &Rectangular::operator=(const Rectangular &other)
 
 Rectangular &Rectangular::operator=(Rectangular &&other)
 {
+    name_ = other.name_;
     weight_ = other.weight_;
     hight_ = other.hight_;
     S_ = other.S_;
     P_ = other.P_;
 
+    other.name_ = "";
     other.weight_ = 0;
     other.hight_ = 0;
     other.S_ = 0;

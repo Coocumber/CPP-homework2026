@@ -17,6 +17,7 @@ Square::Square(Square &&other)
 
 Square &Square::operator=(const Square &other)
 {
+    name_ = other.name_;
     weight_ = other.weight_;
     hight_ = other.hight_;
     S_ = other.S_;
@@ -26,11 +27,13 @@ Square &Square::operator=(const Square &other)
 
 Square &Square::operator=(Square &&other)
 {
+    name_ = other.name_;
     weight_ = other.weight_;
     hight_ = other.hight_;
     S_ = other.S_;
     P_ = other.P_;
 
+    other.name_ = "";
     other.weight_ = 0;
     other.hight_ = 0;
     other.S_ = 0;

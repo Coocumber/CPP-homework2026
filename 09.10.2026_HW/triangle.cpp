@@ -24,6 +24,7 @@ double Triangle::perimeter()
 
 Triangle::Triangle(const Triangle &other)
 {
+    name_ = other.name_;
     a_ = other.a_;
     b_ = other.b_;
     c_ = other.c_;
@@ -34,6 +35,7 @@ Triangle::Triangle(const Triangle &other)
 
 Triangle::Triangle(Triangle &&other)
 {
+    name_ = other.name_;
     a_ = other.a_;
     b_ = other.b_;
     c_ = other.c_;
@@ -41,6 +43,7 @@ Triangle::Triangle(Triangle &&other)
     P_ = other.P_;
     p_ = other.p_;
 
+    other.name_ = "";
     other.a_ = 0;
     other.b_ = 0;
     other.c_ = 0;
@@ -51,6 +54,7 @@ Triangle::Triangle(Triangle &&other)
 
 Triangle &Triangle::operator=(const Triangle &other)
 {
+    name_ = other.name_;
     a_ = other.a_;
     b_ = other.b_;
     c_ = other.c_;
@@ -62,6 +66,7 @@ Triangle &Triangle::operator=(const Triangle &other)
 
 Triangle &Triangle::operator=(Triangle &&other)
 {
+    name_ = other.name_;
     a_ = other.a_;
     b_ = other.b_;
     c_ = other.c_;
@@ -69,6 +74,7 @@ Triangle &Triangle::operator=(Triangle &&other)
     P_ = other.P_;
     p_ = other.p_;
 
+    other.name_ = "";
     other.a_ = 0;
     other.b_ = 0;
     other.c_ = 0;
