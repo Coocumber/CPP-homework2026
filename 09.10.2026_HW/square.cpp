@@ -39,16 +39,6 @@ Square &Square::operator=(Square &&other)
     return *this;
 }
 
-bool operator==(const Square &lhs, const Square &rhs)
-{
-    return abs(lhs.S_ - rhs.S_) < 1e-6;
-}
-
-bool operator^(const Square &lhs, const Square &rhs)
-{
-    return abs(lhs.P_ - rhs.P_) < 1e-6;
-}
-
 std::ostream &operator<<(std::ostream &stream, const Square &rhs)
 {
     stream << "Figure: " << rhs.name_ << " | ";

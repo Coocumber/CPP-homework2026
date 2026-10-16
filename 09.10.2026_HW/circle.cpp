@@ -61,16 +61,6 @@ Circle &Circle::operator=(Circle &&other)
     return *this;
 }
 
-bool operator==(const Circle &lhs, const Circle &rhs)
-{
-    return abs(lhs.S_ - rhs.S_) < 1e-6;
-}
-
-bool operator^(const Circle &lhs, const Circle &rhs)
-{
-    return abs(lhs.P_ - rhs.P_) < 1e-6;
-}
-
 std::ostream &operator<<(std::ostream &stream, const Circle &rhs)
 {
     stream << "Figure: " << rhs.name_ << " | ";

@@ -67,16 +67,6 @@ Rectangular &Rectangular::operator=(Rectangular &&other)
     return *this;
 }
 
-bool operator==(const Rectangular &lhs, const Rectangular &rhs)
-{
-    return abs(lhs.S_ - rhs.S_) < 1e-6;
-}
-
-bool operator^(const Rectangular &lhs, const Rectangular &rhs)
-{
-    return abs(lhs.P_ - rhs.P_) < 1e-6;
-}
-
 std::ostream &operator<<(std::ostream &stream, const Rectangular &rhs)
 {
     stream << "Figure: " << rhs.name_ << " | ";

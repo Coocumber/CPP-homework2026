@@ -18,6 +18,9 @@ public:
 
     Shape() = default;
     virtual ~Shape() = default;
+
+    friend bool operator==(const Shape &lhs, const Shape &rhs);
+    friend bool operator^(const Shape &lhs, const Shape &rhs);
 };
 
 class Triangle : public Shape
@@ -36,8 +39,6 @@ public:
     Triangle &operator=(const Triangle &other);
     Triangle &operator=(Triangle &&other);
 
-    friend bool operator==(const Triangle &lhs, const Triangle &rhs);
-    friend bool operator^(const Triangle &lhs, const Triangle &rhs);
     friend std::ostream &operator<<(std::ostream &stream, const Triangle &shape_t);
 };
 
@@ -57,8 +58,6 @@ public:
     Rectangular &operator=(const Rectangular &other);
     Rectangular &operator=(Rectangular &&other);
 
-    friend bool operator==(const Rectangular &lhs, const Rectangular &rhs);
-    friend bool operator^(const Rectangular &lhs, const Rectangular &rhs);
     friend std::ostream &operator<<(std::ostream &stream, const Rectangular &rhs);
 };
 
@@ -78,8 +77,6 @@ public:
     Circle &operator=(const Circle &other);
     Circle &operator=(Circle &&other);
 
-    friend bool operator==(const Circle &lhs, const Circle &rhs);
-    friend bool operator^(const Circle &lhs, const Circle &rhs);
     friend std::ostream &operator<<(std::ostream &stream, const Circle &rhs);
 };
 
@@ -93,7 +90,5 @@ public:
     Square &operator=(const Square &other);
     Square &operator=(Square &&other);
 
-    friend bool operator==(const Square &lhs, const Square &rhs);
-    friend bool operator^(const Square &lhs, const Square &rhs);
     friend std::ostream &operator<<(std::ostream &stream, const Square &rhs);
 };

@@ -78,16 +78,6 @@ Triangle &Triangle::operator=(Triangle &&other)
     return *this;
 }
 
-bool operator==(const Triangle &lhs, const Triangle &rhs)
-{
-    return abs(lhs.S_ - rhs.S_) < 1e-6;
-}
-
-bool operator^(const Triangle &lhs, const Triangle &rhs)
-{
-    return abs(lhs.P_ - rhs.P_) < 1e-6;
-}
-
 std::ostream &operator<<(std::ostream &stream, const Triangle &rhs)
 {
     stream << "Figure: " << rhs.name_ << " | ";
