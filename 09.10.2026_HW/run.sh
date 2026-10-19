@@ -2,7 +2,7 @@
 
 set -e
 
-echo conpiling start
+echo compiling start
 
 # g++ \
 # main.cpp \
@@ -14,6 +14,6 @@ g++ \
 *.cpp \
 -o run.out
 
-echo -e "conpiling complete\n"
+echo -e "compiling complete\n"
 
 ./run.out
