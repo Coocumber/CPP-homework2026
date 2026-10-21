@@ -28,10 +28,10 @@ Student::Student(Student &&other)
     marks_ = std::move(other.marks_);
     averageScore_ = other.averageScore_;
 
-    averageScore_ = 0.0;
+    other.averageScore_ = 0.0;
 }
 
-Student Student::operator=(const Student &other)
+Student &Student::operator=(const Student &other)
 {
     name_ = other.name_;
     group_ = other.group_;
@@ -41,14 +41,14 @@ Student Student::operator=(const Student &other)
     return *this;
 }
 
-Student Student::operator=(Student &&other)
+Student &Student::operator=(Student &&other)
 {
     name_ = std::move(other.name_);
     group_ = std::move(other.group_);
     marks_ = std::move(other.marks_);
     averageScore_ = other.averageScore_;
 
-    averageScore_ = 0.0;
+    other.averageScore_ = 0.0;
 
     return *this;
 }
@@ -62,12 +62,14 @@ void Student::addMark(int mark)
 void Student::makeAverageScore()
 {
     averageScore_ = 0;
-
-    for (const int &mark : marks_)
+    if (marks_.size())
     {
-        averageScore_ += mark;
+        for (const int &mark : marks_)
+        {
+            averageScore_ += double(mark);
+        }
+        averageScore_ /= double(marks_.size());
     }
-    averageScore_ /= marks_.size();
 }
 
 std::vector<int> Student::getMarks() const
