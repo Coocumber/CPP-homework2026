@@ -33,6 +33,16 @@ public:
     const T &operator[](int n) const;
     T &at(int n);
     const T &at(int n) const;
+
+    T *begin()
+    {
+        return elem;
+    }
+
+    T *end()
+    {
+        return elem + size_;
+    }
 };
 
 template <typename T, typename A>
@@ -44,9 +54,7 @@ template <typename T, typename A>
 inline CustomVector<T, A>::CustomVector(int size, T def) : size_(size), elem(alloc.allocate(size)), capacity_(size)
 {
     for (int i = 0; i < size_; i++)
-    {
-        elem[i] = def;
-    }
+        alloc.construct(&elem[i], def);
 }
 
 template <typename T, typename A>
@@ -58,7 +66,8 @@ inline CustomVector<T, A>::CustomVector(std::initializer_list<T> lst) : size_(ls
 template <typename T, typename A>
 inline CustomVector<T, A>::~CustomVector()
 {
-    delete[] elem;
+    for (int i = 0; i < size_; i++)
+        alloc.destroy(&elem[i]);
 }
 
 template <typename T, typename A>
@@ -73,7 +82,9 @@ inline CustomVector<T, A>::CustomVector(const CustomVector &other) : size_(other
 template <typename T, typename A>
 inline CustomVector<T, A>::CustomVector(CustomVector &&other) noexcept : size_(other.size_), elem(other.elem)
 {
-    delete[] elem;
+    // delete[] elem;
+    for (int i = 0; i < size_; i++)
+        alloc.destroy(&elem[i]);
     elem = other.elem;
     size_ = other.size_;
     capacity_ = other.capacity_;
@@ -103,7 +114,9 @@ inline CustomVector<T, A> &CustomVector<T, A>::operator=(const CustomVector &oth
     {
         p[i] = other.elem[i];
     }
-    delete[] elem;
+    // delete[] elem;
+    for (int i = 0; i < size_; i++)
+        alloc.destroy(&elem[i]);
     elem = p;
     size_ = capacity_ = other.size_;
     return *this;
@@ -112,7 +125,9 @@ inline CustomVector<T, A> &CustomVector<T, A>::operator=(const CustomVector &oth
 template <typename T, typename A>
 inline CustomVector<T, A> &CustomVector<T, A>::operator=(CustomVector &&other) noexcept
 {
-    delete[] elem;
+    // delete[] elem;
+    for (int i = 0; i < size_; i++)
+        alloc.destroy(&elem[i]);
     elem = other.elem;
     size_ = other.size_;
     capacity_ = other.capacity_;
@@ -141,7 +156,7 @@ inline void CustomVector<T, A>::reserve(int n)
         return;
     T *p = alloc.allocate(n);
     for (int i = 0; i < size_; i++)
-        alloc.construct(&p, elem[i]);
+        alloc.construct(&p[i], elem[i]);
     for (int i = 0; i < size_; i++)
         alloc.destroy(&elem[i]);
     alloc.dealocate(elem, capacity_);
@@ -194,13 +209,13 @@ inline T &CustomVector<T, A>::at(int n)
     return elem[n];
 }
 
-// template<typename T, typename A>
-// inline const T & CustomVector<T, A>::at(int n) const
-// {
-//     if (!(0 <= n && n < size_))
-//     {
-//         throw std::out_of_range("index out of range");
-//     }
+template <typename T, typename A>
+inline const T &CustomVector<T, A>::at(int n) const
+{
+    if (!(0 <= n && n < size_))
+    {
+        throw std::out_of_range("index out of range");
+    }
 
-//     return elem[n];
-// }
+    return elem[n];
+}
