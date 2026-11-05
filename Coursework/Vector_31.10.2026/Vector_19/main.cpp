@@ -31,7 +31,8 @@ int main()
     std::cout << std::endl;
 
     std::cout << "Vector 2: ";
-    std::sort(vec2.begin(), vec2.end());
+    std::sort(vec2.begin(), vec2.end(), [](const int &lhs, const int &rhs)
+              { return lhs > rhs; });
     for (int i = 0; i < vec2.size(); i++)
     {
         std::cout << vec2[i] << " ";
